@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimalist Blog</title>
+    <style>
+
+
+html {
+
+
+background-color: #f6f9fc;
+<!--border color: #bdc3c7-->
+<!--date color: #3498db-->
+<!--h2 color: #2c3e50-->
+<!--font: source sans pro-->
+
+
+<!--    background-color: #f6f9fc;-->
+<!--    background-color: 'blue';-->
+}
+
+
+
+body {
+    max-width: 700px;
+    width: 70%;
+    margin: 20px auto;
+    padding: 25px;
+    font-family: 'Camphor', 'Open Sans', 'Segoe UI', sans-serif;
+    background-color: 'blue';
+
+}
+
+.special {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #3498db;
+    font-weight: 400;
+    margin-top: auto;
+}
+
+h2 {
+    color: #2c3e50;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.intro {
+    border-left: 5px solid #bdc3c7;
+    padding-left: 5px;
+}
+
+hr {
+    margin-bottom: 20px;
+}
+    </style>
+    <link rel="stylesheet" type="text/css" href="blog.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:900,400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+<h2>Yellow Pages - Programmatic Lead Generation</h2>
+
+<p class="intro">
+	Kayusi Digital Group is a digital marketing firm that sells SEO services to small businesses located in Los Angeles. Their primary method of generating leads has been word of mouth but the company is ready and would like to scale its business by servicing more clients.
+</p>
+
+<h3>
+    Objective
+</h3>
+
+<p>
+	My task here is to find more leads for KDG in a way that is both scalable and sustainable.
+</p>
+
+<h3>
+    Solution
+</h3>
+
+<p>
+	I propose to build an automated lead-generating web scraper with Python that crawls the Yellow Pages directory, qualifies the prospect, conducts a homepage SEO audit, creates a report, and emails the potential client with our results and offer.
+</p>
+
+<h3>
+    Software Functionality
+</h3>
+
+<h4>
+        Crawling with proxies
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		One common problem that can arise when web scraping for large periods is the risk of getting IP banned from the platform.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		I built and implemented a rotating proxy function into the web crawling functionality. The rotating proxy function sends a request to https://free-proxy-list.net and obtains all the proxies in the table. It then sends a test request to a proxy checker website and appends all the successfully working proxies to our list of proxies to be used for scraping.
+    </li>
+	<li>
+		We rerun this function anytime the web scraper fails to connect to a website 10 times in a row. This keeps the proxy list fresh, efficient, and one step ahead.
+    </li>
+</ul>
+
+<h4>
+        Managing Duplicate Data
+</h4>
+
+
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		At first glance, multiple companies tend to re-appear in various categories. This is an issue because we do not want to contact the same prospect more than once.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		Each time we perform a request and are presented with the company’s data, we do a quick check to see if the phone number is in our database. We found that each listing must have a phone number and that this was the best way to identify duplicates.
+    </li>
+	<li>
+		If the phone number is not in our database, we then proceed to further analyze the company for potential extraction.
+    </li>
+</ul>
+
+<h4>
+        Qualifying prospects
+</h4>
+
+
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		Because our stakeholder is an SEO agency, that means they can only service companies who already have a website. The Yellow Pages directory contains both companies that have and do not have websites.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		My solution to this was to implement another validation logic that checks whether or not the company has a website in its overview. If it has a website, then it’s a match and we append it to our database and prepare it for further analysis.
+    </li>
+	<li>
+		If it does not have a website, we do not extract any of the company’s info and proceed to the next company.
+    </li>
+</ul>
+
+<h4>
+        Extracting Company Information
+</h4>
+
+
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		Once we find a company that’s a good fit, the next step is to extract their data. Because we can not grab the text on the screen, we have to figure out a way to turn this HTML into usable information.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		To solve this problem, we must use a library called BeautifulSoup. This allows us to parse the HTML from the JSON request-response and extract useful and specific information.
+    </li>
+	<li>
+		This information consists of the Company name, address, website, phone number, years in business, years with yellow pages, and preferred yellow pages partner.
+    </li>
+</ul>
+
+<h4>
+        Database Management
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		Once we get the data, storing it in a location we can come back to is important. This will allow us to connect it to a data visualization tool like Tableau for analysis.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		The first option is Google sheets. We use the Google API with the gspread Python library to connect, read and write to our sheets database. The beauty of this is that the data is easily viewable and can be manipulated from any device/location.
+    </li>
+	<li>
+		The next option is connecting it to a SQL database for more robust scalability. We would connect to our local server and set up Inserts/query calls to push and pull from our database.
+    </li>
+</ul>
+
+<h4>
+        Automated Homepage SEO Audit
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		To stand out against other SEO agencies we would like to conduct a quick SEO audit of the company’s homepage.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		I decided to use an external SEO Python library called seoanalyzer which gives a very brief insight into the homepage’s stats. We run this function after the company’s website URL has been identified and extracted.
+    </li>
+</ul>
+
+<h4>
+        Automated Report Maker
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		We now have the SEO results of the audit, the only issue now is to create a report. We don’t want to do this manually because we lose the scalability aspect of our operation.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		We build a function using the Docs API. This API allows us to create a templated document in our Google Drive and then copy it with a mailmerge-like function using the data we got from the SEO audit.
+    </li>
+	<li>
+		We then download that newly created document into our local environment for further handling.
+    </li>
+</ul>
+
+<h4>
+        Automated Company Outreach
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		When conducting the initial data extraction of the company, we can find an email to that we could send information. The only issue is figuring out how to programmatically do this inside the script.
+	</li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		There is a library called SMTPlib that allows us to connect our email accounts to the function and replicate email actions. With this, we can create a subject and message for the email contents, attach our SEO audit report to it, and send it to the recipient’s address.
+    </li>
+</ul>
+
+<h4>
+        Automated Email A/B Testing
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		We want to optimize our chances of success so we’d like to test various email subjects and body messages.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		Here we made a list of various subject headers and then a list of various body messages. Each time the web crawler gets ready to send an email, it first chooses a random subject from the list and then also chooses a random body message from the list.
+    </li>
+	<li>
+		From here we can track the response rates as well as connect a CRM to the email to track open rates. The data from this action allows us to see which combination works best and focus solely on that winning pair.
+    </li>
+</ul>
+
+<h4>
+        Rate Limited Emails
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		When crawling a directory of this size, it is easy to reach a lot of companies within 24 hours. Unfortunately, Gmail has a 500 email send limit for regular Gmail users. Not adhering to this could negatively impact the sender’s account deliverability rate and mark them as spam.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		There are various solutions here. A person can subscribe to Google’s premium Workspace Gmail account and have that limit raised to 2,000.
+    </li>
+	<li>
+		Some people may prefer to not spend money, so we can implement a function that keeps count of how many emails have been sent within the past day. If it reaches 500, the function will stop for 24 hours and then resume the next day.
+    </li>
+	<li>
+		Another free option is to create multiple emails, not just Gmail, and rotate through them on each email sent, similarly to the proxy rotation. This allows us to bypass the 500 emails hard limit and truly scale our outreach efforts.
+    </li>
+</ul>
+
+<h3>
+The Benefits / Business Analysis
+</h3>
+
+<p>Sustainable</p>
+<ul type="1">
+    <li>
+		A directory like Yellow Pages has been around for a long time. Their website code is clean and well-structured which makes scraping it very easy. As long as there are no major site changes, the script should be able to run fully on autopilot with minimal supervision.
+    </li>
+</ul>
+
+<p>Scalable</p>
+<ul type="1">
+    <li>
+		Since we have an automated method of data mining and extraction that works, we can deploy multiple spiders that pinpoint specific industries or regions for faster lead generation results.
+    </li>
+</ul>
+
+<p>Data Collection & Analysis</p>
+<ul type="1">
+    <li>
+		Since we have all the data associated with the emails we send out, we can analyze and conclude specific cities or regions that convert into customers. This data will allow us to focus more on that specific group and increase our conversions there while minimizing our resources expended.
+    </li>
+</ul>
+
+<p>Personalized</p>
+<ul type="1">
+    <li>
+		By creating an SEO audit report for the client, we show them that we care enough to review their site, which ultimately makes us stand out from the competitors. Meanwhile, we were able to do this automatically without having to expend valuable resources that could be used elsewhere.
+    </li>
+</ul>
+
+<h3>
+	Takeaways & Lessons Learned
+</h3>
+
+<p>
+	This task allowed me to learn how to properly rotate proxies for effective and sustainable scraping. It also showed me the capabilities of automated emails and how powerful they could be in outbound sales/marketing. Lastly, the A/B testing of emails is a great way to find the perfect offer early on and be able to produce higher conversions from it.
+</p>
+<p>
+	If I were to do this project again, I would build clean code up-front so that my testing and debugging processes can be easier and more efficient. This issue also gave me exposure to coding with Google Colab’s notebook. This lightweight IDE lets you run some powerful functions which are great for when I want to test a script outside my production environment.
+</p>
+
+<h3>
+	Next Steps
+</h3>
+
+<p>
+	My next steps would be to build a Tableau dashboard where we can view and analyze trends and patterns. This will help us make better decisions in regards to our approach and target market.
+</p>
+<p>
+	Another step would be to migrate this script onto AWS for further reliability and automation. We would also host the SQL database on AWS for easier management when navigating between devices.
+</p>
+
+
+</body>
+</html>

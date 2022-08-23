@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimalist Blog</title>
+    <style>
+
+
+html {
+
+
+background-color: #f6f9fc;
+<!--border color: #bdc3c7-->
+<!--date color: #3498db-->
+<!--h2 color: #2c3e50-->
+<!--font: source sans pro-->
+
+
+<!--    background-color: #f6f9fc;-->
+<!--    background-color: 'blue';-->
+}
+
+
+
+body {
+    max-width: 700px;
+    width: 70%;
+    margin: 20px auto;
+    padding: 25px;
+    font-family: 'Camphor', 'Open Sans', 'Segoe UI', sans-serif;
+    background-color: 'blue';
+
+}
+
+.special {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #3498db;
+    font-weight: 400;
+    margin-top: auto;
+}
+
+h2 {
+    color: #2c3e50;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.intro {
+    border-left: 5px solid #bdc3c7;
+    padding-left: 5px;
+}
+
+hr {
+    margin-bottom: 20px;
+}
+    </style>
+    <link rel="stylesheet" type="text/css" href="blog.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:900,400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+<h2>Craigslist - Programmatic Lead Generation</h2>
+
+<p class="intro">
+    Ranaivo Creatives is a web design firm that makes websites for small businesses located in Los Angeles. Their primary method of generating leads has been through friends and family, but the company is ready and would like to scale its business by getting more clients.
+</p>
+
+<h3>
+    Objective
+</h3>
+
+<p>
+    My task here is to find more leads for Ranaivo Creatives in a way that is both scalable and sustainable.
+</p>
+
+<h3>
+    Solution
+</h3>
+
+<p>
+    I propose to build a lead-generating web scraper with Python that crawls the Craigslist website, qualifies the prospect, and messages the potential client with our offer.
+</p>
+
+<h3>
+    Software Functionality
+</h3>
+
+<h4>
+        Crawling with proxies
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		One common problem that can arise when web scraping for large periods is the risk of getting IP banned from the platform.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		I built and implemented a rotating proxy function into the web crawling functionality. The rotating proxy function sends a request to https://free-proxy-list.net and obtains all the proxies in the table. It then sends a test request to a proxy checker website and appends all the successfully working proxies to our list of proxies to be used for scraping.
+    </li>
+	<li>
+		We rerun this function anytime the web scraper fails to connect to a website 10 times in a row. This keeps the proxy list fresh, efficient, and one step ahead.
+    </li>
+</ul>
+
+<h4>
+        Managing Duplicate Data
+</h4>
+
+
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		At first glance, multiple companies tend to re-appear in various categories. This is an issue because we do not want to contact the same prospect more than once.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		Each time we perform a request and are presented with the company’s data, we do a quick check to see if the phone number is in our database. We found that each listing must have a phone number and that this was the best way to identify duplicates.
+    </li>
+	<li>
+		If the phone number is not in our database, we then proceed to further analyze the company for potential extraction.
+    </li>
+</ul>
+
+<h4>
+        Managing Duplicate Data Vol. 2
+</h4>
+
+
+<p>Problem:</p>
+<ul type="1">
+    <li>
+        Sometimes a business would list their phone number on one post and a different number on the other. This can pose issues if we only rely on phone numbers for duplicate checking.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+        We noticed that a lot of sellers post the same Header and body across multiple listings to achieve efficient scale. To combat the phone duplication problem, we create a function that cross-checks the headers and body messages of the posts to see if it’s in the database as well. If it’s in the database then that means the business is the same and we should avoid reaching out to them again.
+    </li>
+</ul>
+
+<h4>
+        Extracting Company Information
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+        Once we find a company that’s a good fit, the next step is to extract their data. Because we can not grab the text on the screen, we have to figure out a way to turn this HTML into usable information.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+        To solve this problem, we must use a library called BeautifulSoup. This allows us to parse the HTML from the JSON request-response and pinpoint the specific information that is useful.
+    </li>
+</ul>
+
+<h4>
+        Database Management
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+		Once we get the data, storing it in a location we can come back to is important. This will allow us to connect it to a data visualization tool like Tableau for analysis.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+		The first option is Google sheets. We use the Google API with the gspread Python library to connect, read and write to our sheets database. The beauty of this is that the data is easily viewable and can be manipulated from any device/location.
+    </li>
+	<li>
+		The next option is connecting it to a SQL database for more robust scalability. We would connect to our local server and set up Inserts/query calls to push and pull from our database.
+    </li>
+</ul>
+
+<h4>
+        Automated Company Outreach
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+        When conducting the initial data extraction of the company, we were able to find a phone number to send more information. The only issue was figuring out how to programmatically automate these texts.
+	</li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+        We were able to navigate this with the help of Twilio, a python library that lets us send a text to our prospects’ phone numbers. This means that anytime we find a unique listing with a unique number, we text our sales offer to them in hopes of converting them into a client.
+    </li>
+</ul>
+
+<h4>
+        Automated Email A/B Testing
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+        We want to optimize our chances of success so we’d like to test various messages.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+        To solve this, we made a list of messages for our script to randomly rotate through. From here we can track the response rates as well as connect a CRM to the email to track open rates. The data from this action allows us to see which combination works best and focus solely on that winning pair.
+    </li>
+</ul>
+
+<h4>
+        Rate Limited Texts
+</h4>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+        When crawling a directory of this size, it is easy to reach a lot of companies within a 24-hour time period. Unfortunately, SMS messages can be flagged as spam when sending bulk messages.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+        To avoid this, we can get multiple phone numbers with Twilio for $1 / each and rotate through them to avoid being triggered by spam detection.
+    </li>
+</ul>
+
+<h3>
+The Benefits / Business Analysis
+</h3>
+
+<p>Sustainable</p>
+<ul type="1">
+    <li>
+        A directory like Craigslist has been around for a long time. Their website code is clean and well structured which makes scraping it very easy. As long as there are no major site changes, the script should be able to run fully on autopilot with minimal supervision.
+    </li>
+</ul>
+
+<p>Scalable</p>
+<ul type="1">
+    <li>
+		Since we have an automated method of data mining and extraction that works, we can deploy multiple spiders that pinpoint specific industries or regions for faster lead generation results.
+    </li>
+</ul>
+
+<p>Data Collection & Analysis</p>
+<ul type="1">
+    <li>
+        Since we have all the data associated with the messages we send out, we can analyze and conclude specific cities or regions that convert into customers. This data will allow us to focus more on that specific group and increase our conversions there while minimizing our resources expended.
+    </li>
+</ul>
+
+<h3>
+	Takeaways & Lessons Learned
+</h3>
+
+<p>
+    This task allowed me to learn how to properly rotate proxies for effective and sustainable scraping. It also showed me the capabilities of automated texts and how powerful they could be in outbound sales/marketing. Lastly, the A/B testing of texts is a great way to find the perfect offer early on and be able to produce higher conversions from it.
+</p>
+<p>
+    If I were to do this project again, I would build clean code up-front so that my testing and debugging processes can be easier and more efficient. This issue also gave me exposure to coding with Google Colab’s notebook. This lightweight IDE lets you run some powerful functions which are great for when I want to test a script outside of my production environment.
+</p>
+
+<h3>
+	Next Steps
+</h3>
+
+<p>
+	My next steps would be to build a Tableau dashboard where we can view and analyze trends and patterns. This will help us make better decisions in regards to our approach and target market.
+</p>
+<p>
+	Another step would be to migrate this script onto AWS for further reliability and automation. We would also host the SQL database on AWS for easier management when navigating between devices.
+</p>
+
+
+</body>
+</html>

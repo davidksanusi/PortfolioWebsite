@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimalist Blog</title>
+    <style>
+
+
+html {
+
+
+background-color: #f6f9fc;
+<!--border color: #bdc3c7-->
+<!--date color: #3498db-->
+<!--h2 color: #2c3e50-->
+<!--font: source sans pro-->
+
+
+<!--    background-color: #f6f9fc;-->
+<!--    background-color: 'blue';-->
+}
+
+
+
+body {
+    max-width: 700px;
+    width: 70%;
+    margin: 20px auto;
+    padding: 25px;
+    font-family: 'Camphor', 'Open Sans', 'Segoe UI', sans-serif;
+    background-color: 'blue';
+
+}
+
+.special {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #3498db;
+    font-weight: 400;
+    margin-top: auto;
+}
+
+h2 {
+    color: #2c3e50;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.intro {
+    border-left: 5px solid #bdc3c7;
+    padding-left: 5px;
+}
+
+hr {
+    margin-bottom: 20px;
+}
+    </style>
+    <link rel="stylesheet" type="text/css" href="blog.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:900,400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+<h2>Retail Performance Dashboard</h2>
+
+<p class="intro">
+	Balmart is a national retail chain that sells a variety of categorical items. They want a better understanding of the store’s performance in regards to revenue and would like a visual that can quickly give them an idea of their progress.
+</p>
+
+<h3>
+    Objective
+</h3>
+
+<p>
+	My task here is to create a visual representation of all the sales in the last 12 months while drawing insights into revenue by age, state, category, and gender. I also need to find the correlation between discounts and the total quantity ordered per customer.
+</p>
+
+<h3>
+    Solution
+</h3>
+
+<p>
+	I propose to build a Tableau dashboard that highlights sales data that can be filtered based on various parameters to help pinpoint areas of success and areas in need of improvement.
+</p>
+
+<h3>
+    Methodology
+</h3>
+
+<p>
+	I chose to use descriptive analysis as the primary method of assessing and reporting this data. This is because our goal is to summarize data points to uncover patterns that can help us reach our business goals more efficiently. The dashboard will be geared more towards the sales team as they are trying to measure revenue metrics.
+</p>
+
+<h3>
+	Visualized Data
+</h3>
+
+<p>Revenue per State</p>
+<ul type="1">
+    <li>
+		The revenue by state metric takes the graph of the United States country and immediately helps us visualize which locations are highest in revenue. The density of the color from green to red also helps us quickly identify Texas as the state with the most generated revenue.
+	</li>
+</ul>
+
+<p>Revenue per Month</p>
+<ul type="1">
+    <li>
+		This is a bar chart that shows the revenue that each month generated. We are quickly able to assess that December 2020 was the company’s best performing month that year. We can conclude that the holiday season was a driving factor for this cause.
+    </li>
+</ul>
+
+<p>Revenue per Age</p>
+<ul type="1">
+    <li>
+		This is another bar chart that showcases revenue by various age ranges. It is clear to see that ages 20~70 stand out against the rest. With the label above each chart, we can accurately decipher that the age 30-40 range generates the most revenue, with the 60~70 age range slightly behind in second place.
+	</li>
+</ul>
+<p>Quantity - Discount Percentage Correlation</p>
+<ul type="1">
+    <li>
+		This is a density scatter chart that plots the correlation between quantities ordered and discount percentage. As we move further down the right axis of the chart where the discount percentage increases, we notice that the quantity order also increases which means that there is a positive correlation.
+	</li>
+</ul>
+
+<p>Percentage of Revenue per Region</p>
+
+<ul type="1">
+    <li>
+		Since only 4 variables are being measured, we decide to use a donut chart. This allows us to see how much the South generates in revenue which can be attributed largely to Texas as noted in the previous graph.
+    </li>
+</ul>
+<p>Revenue per Category per Gender</p>
+<ul type="1">
+    <li>
+		Here we conduct a deeper analysis of the highest revenue-generating categories for each gender. We quickly see Mobile and Tablet gadgets dominate the earnings compared to all other categories combined. From this, we can conclude that the company’s focus should be primarily on mobile and tablet gadgets.
+    </li>
+</ul>
+
+<h3>
+	Final Dashboard
+</h3>
+
+<p>
+	In the final dashboard, we compile all of our charts so that we can get an overview of all the metrics we are trying to measure as well as an interactive filtering interface. When we turn on the filter icon for each widget, we can see the impact each parameter has on the other graphs.
+</p>
+
+<p>
+	For example, if I click on revenue by age 40~50, the entire dashboard adjusts and we can now see that the majority of the revenue comes from California, as opposed to Texas.
+</p>
+
+<h3>
+The Benefits / Business Analysis
+</h3>
+
+<p>
+	The benefit of creating a dashboard with Tableau is the ease of use and comprehension for non-technical individuals. With this dashboard, we can communicate important findings to our stakeholders and agree on suggestions that are supported by the data recently presented.
+</p>
+
+<p>
+	Tableau paired with a database like SQL is also sustainable and scalable. Both tools are here to stay and are constantly being improved upon. With a strong support system like this, their forecasted longevity is certain. These tools also make this system scalable because we can dynamically import and update the data that comes into our SQL database straight into the Tableau system, making sure visualizations are always up to date.
+</p>
+
+<h3>
+Next Steps
+</h3>
+
+<p>
+	One way we could take this further is by building a mobile representation of our dashboard. This could either be via a mobile app or through a personal company website that we can use to access this data 24/7 on the go.
+</p>
+
+</body>
+</html>

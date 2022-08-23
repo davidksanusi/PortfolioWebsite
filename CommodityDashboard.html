@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimalist Blog</title>
+    <style>
+
+
+html {
+
+
+background-color: #f6f9fc;
+<!--border color: #bdc3c7-->
+<!--date color: #3498db-->
+<!--h2 color: #2c3e50-->
+<!--font: source sans pro-->
+
+
+<!--    background-color: #f6f9fc;-->
+<!--    background-color: 'blue';-->
+}
+
+
+
+body {
+    max-width: 700px;
+    width: 70%;
+    margin: 20px auto;
+    padding: 25px;
+    font-family: 'Camphor', 'Open Sans', 'Segoe UI', sans-serif;
+    background-color: 'blue';
+
+}
+
+.special {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #3498db;
+    font-weight: 400;
+    margin-top: auto;
+}
+
+h2 {
+    color: #2c3e50;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.intro {
+    border-left: 5px solid #bdc3c7;
+    padding-left: 5px;
+}
+
+hr {
+    margin-bottom: 20px;
+}
+    </style>
+    <link rel="stylesheet" type="text/css" href="blog.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:900,400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+<h2>Commodity Dashboard</h2>
+
+<p class="intro">
+    Liason International wants to explore trading commodity futures contracts as a hedge against its current physical trading operations. To better understand the market and the opportunities available, they would like a dashboard that showcases various profit forecasting models.
+</p>
+
+<h3>
+    Objective
+</h3>
+
+<p>
+    My task here is to build a dynamic dashboard in Google Sheet/ Excel that collects commodity pricing information and presents potential profit opportunities at a conservative rate of 10%.
+</p>
+
+<h3>
+    Solution
+</h3>
+
+<p>
+    I propose to build a lightweight Google Sheets dashboard that connects to a commodity API  using AppScript (Excel VBAs), imports the data into the worksheet using Macros, and displays various graphs using Pivot Tables.
+</p>
+
+<h3>
+    Software Functionality
+</h3>
+
+<h5>
+    <u>
+        Getting Commodity Pricing
+    </u>
+</h5>
+
+
+<p>Problem:</p>
+<ul type="1">
+    <li>
+        We need a way to retrieve current pricing on commodities without having to manually search and update the data ourselves.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+        This is where AppScript, Google’s version of VBA, comes in. We can write a Javascript function that sends an API request to a commodities page and retrieves the pricing on-demand. We are then able to create a Macro that retrieves the calls and transfers the result of this function into our Google sheets table.
+    </li>
+</ul>
+
+<h5>
+    <u>
+        Current vs. Future Price Analysis
+    </u>
+</h5>
+
+<p>Problem:</p>
+<ul type="1">
+    <li>
+        We need to be able to analyze various trading scenarios where we sell at the current market price and where we sell at 10% above the current market price.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+        My solution to this is to create multiple columns that calculate the total market value of our commodity contracts as well as the potential market value of the commodity contracts if they were to increase by 10%. This helps us see a clever picture of our dollar gain in each scenario.
+    </li>
+</ul>
+
+<h5>
+    <u>
+        Dynamic Pivot Tables
+    </u>
+</h5>
+
+<p>Problem:</p>
+<ul type="1">
+    <li>
+        We need to be able to visually analyze our commodity options and which ones we should focus on.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+        This is where a Pivot table comes in. Once we have all the data we need, we create a pivot table to compare and contrast the performance amongst both forecasted scenarios. This gives us an outlook of the results we’d see on a relatively conservative approach. Whichever commodity reaches the target first, we will focus on capitalizing there for more opportunities.
+    </li>
+</ul>
+
+<h3>
+The Benefits / Business Analysis
+</h3>
+
+<p>Sustainable</p>
+<ul type="1">
+    <li>
+        Since we have an automated method of getting up-to-date information on commodity prices, we can be certain that our forecasts and models will always be correct and accurate.
+    </li>
+</ul>
+
+<p>Scalable</p>
+<ul type="1">
+    <li>
+        If we ever want to add more commodities to compare and contrast, we can just add the ticker symbol to the necessary column and all the data points will be automatically populated, making the modeling process swift and easy.
+    </li>
+</ul>
+
+<p>Easy to Use & Comprehend</p>
+<ul type="1">
+    <li>
+        Our dashboard shows the compilation of various scenarios and models on a single page which allows for quick and easy analysis. If we want to make the user experience even better, we could publish this application online on the web or create a mobile app.
+    </li>
+</ul>
+
+</body>
+</html>
