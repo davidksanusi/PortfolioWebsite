@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Minimalist Blog</title>
+    <title>YP Lead Gen</title>
     <style>
 
 
@@ -54,6 +54,25 @@ h2 {
 hr {
     margin-bottom: 20px;
 }
+
+.content-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+.content-imgs{
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+}
+
+.double-img {
+    width:100%;
+    display: flex;
+    flex-direction: row;
+}
     </style>
     <link rel="stylesheet" type="text/css" href="blog.css">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:900,400' rel='stylesheet' type='text/css'>
@@ -83,6 +102,8 @@ hr {
 	I propose to build an automated lead-generating web scraper with Python that crawls the Yellow Pages directory, qualifies the prospect, conducts a homepage SEO audit, creates a report, and emails the potential client with our results and offer.
 </p>
 
+<image class="content-img" src="YPLGimages/Screen Shot 2022-08-24 at 10.45.58 AM.png"/>
+
 <h3>
     Software Functionality
 </h3>
@@ -105,6 +126,8 @@ hr {
 		We rerun this function anytime the web scraper fails to connect to a website 10 times in a row. This keeps the proxy list fresh, efficient, and one step ahead.
     </li>
 </ul>
+
+<image class="content-img" src="YPLGimages/Screen Shot 2022-08-24 at 10.46.20 AM.png"/>
 
 <h4>
         Managing Duplicate Data
@@ -148,6 +171,8 @@ hr {
     </li>
 </ul>
 
+<image class="content-img" src="YPLGimages/Screen Shot 2022-08-24 at 10.48.50 AM.png"/>
+
 <h4>
         Extracting Company Information
 </h4>
@@ -169,6 +194,8 @@ hr {
     </li>
 </ul>
 
+<image class="content-img" src="YPLGimages/Screen Shot 2022-08-25 at 10.09.17 AM.png"/>
+
 <h4>
         Database Management
 </h4>
@@ -187,6 +214,9 @@ hr {
 		The next option is connecting it to a SQL database for more robust scalability. We would connect to our local server and set up Inserts/query calls to push and pull from our database.
     </li>
 </ul>
+
+<image class="content-img" src="YPLGimages/Screen Shot 2022-08-24 at 10.54.12 AM.png"/>
+
 
 <h4>
         Automated Homepage SEO Audit
@@ -223,6 +253,9 @@ hr {
     </li>
 </ul>
 
+<image class="content-img" src="YPLGimages/Screen Shot 2022-08-24 at 10.57.08 AM.png"/>
+
+
 <h4>
         Automated Company Outreach
 </h4>
@@ -238,6 +271,7 @@ hr {
 		There is a library called SMTPlib that allows us to connect our email accounts to the function and replicate email actions. With this, we can create a subject and message for the email contents, attach our SEO audit report to it, and send it to the recipient’s address.
     </li>
 </ul>
+
 
 <h4>
         Automated Email A/B Testing
@@ -257,6 +291,12 @@ hr {
 		From here we can track the response rates as well as connect a CRM to the email to track open rates. The data from this action allows us to see which combination works best and focus solely on that winning pair.
     </li>
 </ul>
+
+<div class="double-img">
+    <image class="content-imgs" src="YPLGimages/Screen Shot 2022-08-24 at 10.58.31 AM.png"/>
+    <image class="content-imgs" src="YPLGimages/Screen Shot 2022-08-24 at 10.58.02 AM.png"/>
+</div>
+
 
 <h4>
         Rate Limited Emails
