@@ -54,6 +54,25 @@ h2 {
 hr {
     margin-bottom: 20px;
 }
+
+.content-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+.content-imgs{
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+}
+
+.double-img {
+    width:100%;
+    display: flex;
+    flex-direction: row;
+}
     </style>
     <link rel="stylesheet" type="text/css" href="blog.css">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:900,400' rel='stylesheet' type='text/css'>
@@ -83,29 +102,11 @@ hr {
     I propose to build a lightweight Google Sheets dashboard that connects to a commodity API  using AppScript (Excel VBAs), imports the data into the worksheet using Macros, and displays various graphs using Pivot Tables.
 </p>
 
+<image class="content-img" src="CDimages/Screen Shot 2022-08-24 at 1.30.19 PM.png"/>
+
 <h3>
     Software Functionality
 </h3>
-
-<h5>
-    <u>
-        Getting Commodity Pricing
-    </u>
-</h5>
-
-
-<p>Problem:</p>
-<ul type="1">
-    <li>
-        We need a way to retrieve current pricing on commodities without having to manually search and update the data ourselves.
-    </li>
-</ul>
-<p>Solution:</p>
-<ul type="1">
-    <li>
-        This is where AppScript, Google’s version of VBA, comes in. We can write a Javascript function that sends an API request to a commodities page and retrieves the pricing on-demand. We are then able to create a Macro that retrieves the calls and transfers the result of this function into our Google sheets table.
-    </li>
-</ul>
 
 <h5>
     <u>
@@ -126,6 +127,32 @@ hr {
     </li>
 </ul>
 
+<image class="content-img" src="CDimages/Screen Shot 2022-08-24 at 1.31.49 PM.png"/>
+
+
+
+<h5>
+    <u>
+        Getting Commodity Pricing
+    </u>
+</h5>
+<p>Problem:</p>
+<ul type="1">
+    <li>
+        We need a way to retrieve current pricing on commodities without having to manually search and update the data ourselves.
+    </li>
+</ul>
+<p>Solution:</p>
+<ul type="1">
+    <li>
+        This is where AppScript, Google’s version of VBA, comes in. We can write a Javascript function that sends an API request to a commodities page and retrieves the pricing on-demand. We are then able to create a Macro that retrieves the calls and transfers the result of this function into our Google sheets table.
+    </li>
+</ul>
+
+<image class="content-img" src="CDimages/Screen Shot 2022-08-24 at 1.30.31 PM.png"/>
+
+
+
 <h5>
     <u>
         Dynamic Pivot Tables
@@ -144,6 +171,9 @@ hr {
         This is where a Pivot table comes in. Once we have all the data we need, we create a pivot table to compare and contrast the performance amongst both forecasted scenarios. This gives us an outlook of the results we’d see on a relatively conservative approach. Whichever commodity reaches the target first, we will focus on capitalizing there for more opportunities.
     </li>
 </ul>
+
+<image class="content-img" src="CDimages/Screen Shot 2022-08-24 at 1.30.19 PM.png"/>
+
 
 <h3>
 The Benefits / Business Analysis
